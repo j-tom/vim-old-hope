@@ -122,92 +122,93 @@ endif
 
 " Highlight groups {{{
 " Base coloring
-call s:SetHi("Normal"    , s:gVeryLightGrey, s:gBlack, "none"     , s:tVeryLightGrey, s:tBlack, "none")
-call s:SetHi("Underlined", s:gVeryLightGrey, s:gBlack, "underline", s:tVeryLightGrey, s:tBlack, "underline")
+call s:SetHi("Normal"        , s:gVeryLightGrey, s:gBlack       , "none"       , s:tVeryLightGrey, s:tBlack       , "none"       )
+call s:SetHi("Underlined"    , s:gVeryLightGrey, s:gBlack       , "underline"  , s:tVeryLightGrey, s:tBlack       , "underline"  )
 " * Variable types
-call s:SetHi("Number", s:gOrange, s:gBlack, "none", s:tOrange, s:tBlack, "none")
-call s:SetHi("Float", s:gOrange, s:gBlack, "none", s:tOrange, s:tBlack, "none")
-call s:SetHi("Constant", s:gOrange, s:gBlack, "bold", s:tOrange, s:tBlack, "bold")
-call s:SetHi("Boolean", s:gYellow, s:gBlack, "italic", s:tYellow, s:tBlack, "italic")
-call s:SetHi("String", s:gGreen, s:gBlack, "italic", s:tGreen, s:tBlack, "italic")
-call s:SetHi("Character", s:gGreen, s:gBlack, "italic", s:tGreen, s:tBlack, "italic")
+call s:SetHi("Number"        , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
+call s:SetHi("Float"         , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
+call s:SetHi("Constant"      , s:gOrange       , s:gBlack       , "bold"       , s:tOrange       , s:tBlack       , "bold"       )
+call s:SetHi("Boolean"       , s:gYellow       , s:gBlack       , "italic"     , s:tYellow       , s:tBlack       , "italic"     )
+call s:SetHi("String"        , s:gGreen        , s:gBlack       , "italic"     , s:tGreen        , s:tBlack       , "italic"     )
+call s:SetHi("Character"     , s:gGreen        , s:gBlack       , "italic"     , s:tGreen        , s:tBlack       , "italic"     )
 " * Keyword types
-hi Conditional     guifg=#eb3d54               gui=bold
-hi Keyword         guifg=#eb3d54               gui=bold
-hi Operator        guifg=#eb3d54
-hi Statement       guifg=#eb3d54               gui=bold
-hi Directory       guifg=#78bd65               gui=bold
-hi Label           guifg=#e5cc52               gui=none
-hi Define          guifg=#4fb3d8
-hi Macro           guifg=#4fb3d8               gui=italic
-hi SpecialKey      guifg=#4fb3d8               gui=italic
-hi Function        guifg=#e5cc52
-hi Identifier      guifg=#e5cc52
-hi PreCondit       guifg=#78bd65               gui=bold
-hi PreProc         guifg=#e5cc52
-hi Delimiter       guifg=#cbcdd2
-hi Structure       guifg=#4fb3d8
-hi Todo            guifg=#eb3d54 guibg=bg      gui=bold
-hi Typedef         guifg=#78bd65
-hi Type            guifg=#78bd65               gui=none
-hi Comment         guifg=#686b78
+call s:SetHi("Conditional"   , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("Keyword"       , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("Operator"      , s:gRed          , s:gBlack       , "none"       , s:tRed          , s:tBlack       , "none"       )
+call s:SetHi("Statement"     , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("Directory"     , s:gGreen        , s:gBlack       , "bold"       , s:tGreen        , s:tBlack       , "bold"       )
+call s:SetHi("Label"         , s:gYellow       , s:gBlack       , "none"       , s:tYellow       , s:tBlack       , "none"       )
+call s:SetHi("Define"        , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
+call s:SetHi("Macro"         , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
+call s:SetHi("SpecialKey"    , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
+call s:SetHi("Function"      , s:gYellow       , s:gBlack       , "none"       , s:tYellow       , s:tBlack       , "none"       )
+call s:SetHi("Identifier"    , s:gYellow       , s:gBlack       , "none"       , s:tYellow       , s:tBlack       , "none"       )
+call s:SetHi("PreCondit"     , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
+call s:SetHi("PreProc"       , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
+call s:SetHi("Delimiter"     , s:gVeryLightGrey, s:gBlack       , "none"       , s:tVeryLightGrey, s:tBlack       , "none"       )
+call s:SetHi("Todo"          , s:gOrange       , s:gBlack       , "bold"       , s:tOrange       , s:tBlack       , "bold"       )
+call s:SetHi("Structure"     , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
+call s:SetHi("Typedef"       , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
+call s:SetHi("Type"          , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
+call s:SetHi("Comment"       , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
 " * Cursor
-call s:SetHi("Cursor" , s:gBlack, s:gWhite, "none", s:tBlack, s:tWhite, "none")
-call s:SetHi("iCursor", s:gBlack, s:gWhite, "none", s:tBlack, s:tWhite, "none")
+call s:SetHi("Cursor"        , s:gBlack        , s:gWhite       , "none"       , s:tBlack        , s:tWhite       , "none"       )
+call s:SetHi("iCursor"       , s:gBlack        , s:gWhite       , "none"       , s:tBlack        , s:tWhite       , "none"       )
 " * Diff
-call s:SetHi("DiffAdd", s:gBlack, s:gGreen, "none", s:tBlack, s:tGreen, "none")
-call s:SetHi("DiffChange", s:gBlack, s:gYellow, "none", s:tBlack, s:tYellow, "none")
-call s:SetHi("DiffDelete", s:gBlack, s:gRed, "none", s:tBlack, s:tRed, "none")
-call s:SetHi("DiffText", "", s:gGrey, "italic,bold", "", s:tGrey, "italic,bold")
+call s:SetHi("DiffAdd"       , s:gBlack        , s:gGreen       , "none"       , s:tBlack        , s:tGreen       , "none"       )
+call s:SetHi("DiffChange"    , s:gBlack        , s:gYellow      , "none"       , s:tBlack        , s:tYellow      , "none"       )
+call s:SetHi("DiffDelete"    , s:gBlack        , s:gRed         , "none"       , s:tBlack        , s:tRed         , "none"       )
+call s:SetHi("DiffText"      , ""              , s:gGrey        , "italic,bold", ""              , s:tGrey        , "italic,bold")
 " * Errors
-hi Debug           guifg=#BCA3A3               gui=bold
-hi Error           guifg=#e5cc52 guibg=#1E0010
-hi ErrorMsg        guifg=#eb3d54 guibg=#232526 gui=bold
-hi Exception       guifg=#78bd65               gui=bold
+call s:SetHi("Debug"         , s:gOrange       , s:gBlack       , "bold"       , s:tOrange       , s:tBlack       , "bold"       )
+call s:SetHi("Error"         , s:gBlack        , s:gRed         , "bold"       , s:tBlack        , s:tRed         , "bold"       )
+call s:SetHi("ErrorMsg"      , s:gBlack        , s:gRed         , "none"       , s:tBlack        , s:tRed         , "none"       )
+call s:SetHi("Exception"     , s:gYellow       , s:gBlack       , "bold"       , s:tYellow       , s:tBlack       , "bold"       )
 " * Folding
-hi FoldColumn      guifg=#686b78 guibg=#000000
-hi Folded          guifg=#686b78 guibg=#000000
+call s:SetHi("FoldColumn"    , s:gLightGrey    , s:gDarkGrey    , "none"       , s:tLightGrey    , s:tDarkGrey    , "none"       )
+call s:SetHi("Folded"        , s:gLightGrey    , s:gDarkGrey    , "none"       , s:tLightGrey    , s:tDarkGrey    , "none"       )
 " * Searching
-hi IncSearch       guifg=#78bd65 guibg=#000000
-hi Search          guifg=#000000 guibg=#4fb3d8
+call s:SetHi("IncSearch"     , s:gBlack        , s:gLightGrey   , "none"       , s:tBlack        , s:tLightGrey   , "none"       )
+call s:SetHi("Search"        , s:gBlack        , s:gBlue        , "none"       , s:tBlack        , s:tBlue        , "none"       )
 " * Other
-hi Ignore          guifg=#686b78 guibg=bg
-call s:SetHi("MatchParen", s:gYellow, s:gBlack, "bold", s:tYellow, s:tBlack, "bold")
-hi ModeMsg         guifg=#e5cc52
-hi MoreMsg         guifg=#e5cc52
-hi Question        guifg=#4fb3d8
-hi Repeat          guifg=#eb3d54               gui=bold
+call s:SetHi("Ignore"        , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
+call s:SetHi("MatchParen"    , s:gYellow       , s:gBlack       , "bold"       , s:tYellow       , s:tBlack       , "bold"       )
+call s:SetHi("ModeMsg"       , s:gGreen        , s:gBlack       , "bold"       , s:tGreen        , s:tBlack       , "bold"       )
+call s:SetHi("ModeMsg"       , s:gYellow       , s:gBlack       , "bold"       , s:tYellow       , s:tBlack       , "bold"       )
+call s:SetHi("Question"      , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("Repeat"        , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
 " * Complete menu
-hi Pmenu           guifg=#4fb3d8 guibg=#000000
-hi PmenuSel        guifg=#000000 guibg=#e5cc52
-hi PmenuSbar                     guibg=#1c1d21
-hi PmenuThumb      guifg=#4fb3d8
+call s:SetHi("Pmenu"         , s:gWhite        , s:gDarkGrey    , "none"       , s:tWhite        , s:tDarkGrey    , "none"       )
+call s:SetHi("PmenuSel"      , s:gBlack        , s:gYellow      , "bold"       , s:tBlack        , s:tYellow      , "bold"       )
+call s:SetHi("PmenuSbar"     , s:gVeryDarkGrey , s:gVeryDarkGrey, "none"       , s:tVeryDarkGrey , s:tVeryDarkGrey, "none"       )
+call s:SetHi("PmenuSbar"     , s:gBlue         , s:gDarkGrey    , "none"       , s:tBlue         , s:tDarkGrey    , "none"       )
 " * Marks
-hi SignColumn      guifg=#78bd65 guibg=#232526
-hi SpecialChar     guifg=#eb3d54               gui=bold
-hi SpecialComment  guifg=#7E8E91               gui=bold
-hi Special         guifg=#4fb3d8 guibg=bg      gui=italic
+call s:SetHi("SignColumn"    , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
+call s:SetHi("SpecialChar"   , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("SpecialChar"   , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("SpecialComment", s:gGrey         , s:gBlack       , "bold"       , s:tGrey         , s:tBlack       , "bold"       )
+call s:SetHi("Special"       , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
 " GUI
-call s:SetHi("StatusLine", s:gBlue, s:gBlack, "none", s:tGreen, s:tBlack, "none")
-call s:SetHi("StatusLineNC", s:gDarkGrey, s:gBlack, "none", s:tDarkGrey, s:tBlack, "none")
-call s:SetHi("StorageClass", s:gYellow, "", "italic", s:tYellow, "", "italic")
-call s:SetHi("Tag", "", "", "underline", "", "", "underline")
-call s:SetHi("Title", s:gOrange, "", "none", s:tOrange, "", "none")
-call s:SetHi("VertSplit", s:gRed, s:gBlack, "bold", s:tRed, s:tBlack, "bold")
-call s:SetHi("VisualNOS", "", s:gVeryDarkGrey, "", "", s:tVeryDarkGrey, "")
-call s:SetHi("Visual", "", s:gVeryDarkGrey, "", "", s:tVeryDarkGrey, "")
-call s:SetHi("WarningMsg", s:gOrange, s:gBlack, "", s:tOrange, s:tBlack, "")
-call s:SetHi("WildMenu", s:gBlue, s:gBlack, "", s:tBlue, s:tBlack, "")
-call s:SetHi("TabLineFill", s:gBlack, s:gBlack       , "none", s:tBlack, s:tBlack  , "none")
-call s:SetHi("TabLineSel", s:gLightGrey, s:gBlack       , "none", s:tLightGrey, s:tBlack  , "none")
-call s:SetHi("TabLine", s:gGrey, s:gBlack       , "none", s:tGrey, s:tBlack  , "none")
-call s:SetHi("CursorLineNr", s:gBlue, s:gBlack       , "bold", s:tBlue, s:tBlack       , "bold")
-call s:SetHi("CursorLine"  , ""     , s:gVeryDarkGrey, ""    , ""     , s:tVeryDarkGrey, "")
-call s:SetHi("CursorColumn", ""     , s:gVeryDarkGrey, ""    , ""     , s:tVeryDarkGrey, "")
-call s:SetHi("ColorColumn" , ""     , s:gVeryDarkGrey, ""    , ""     , s:tVeryDarkGrey, "")
-call s:SetHi("LineNr"      , s:gGrey, s:gBlack       , "none", s:tGrey, s:tBlack       , "none")
-call s:SetHi("NonText"     , s:gRed, s:gBlack       , "none", s:tRed, s:tBlack       , "none")
-call s:SetHi("SpecialKey"     , s:gRed, s:gBlack       , "none", s:tRed, s:tBlack       , "none")
+call s:SetHi("StatusLine"    , s:gBlue         , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
+call s:SetHi("StatusLineNC"  , s:gDarkGrey     , s:gBlack       , "none"       , s:tDarkGrey     , s:tBlack       , "none"       )
+call s:SetHi("StorageClass"  , s:gYellow       , ""             , "italic"     , s:tYellow       , ""             , "italic"     )
+call s:SetHi("Tag"           , ""              , ""             , "underline"  , ""              , ""             , "underline"  )
+call s:SetHi("Title"         , s:gOrange       , ""             , "none"       , s:tOrange       , ""             , "none"       )
+call s:SetHi("VertSplit"     , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi("VisualNOS"     , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
+call s:SetHi("Visual"        , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
+call s:SetHi("WarningMsg"    , s:gOrange       , s:gBlack       , ""           , s:tOrange       , s:tBlack       , ""           )
+call s:SetHi("WildMenu"      , s:gBlue         , s:gBlack       , ""           , s:tBlue         , s:tBlack       , ""           )
+call s:SetHi("TabLineFill"   , s:gBlack        , s:gBlack       , "none"       , s:tBlack        , s:tBlack       , "none"       )
+call s:SetHi("TabLineSel"    , s:gLightGrey    , s:gBlack       , "none"       , s:tLightGrey    , s:tBlack       , "none"       )
+call s:SetHi("TabLine"       , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
+call s:SetHi("CursorLineNr"  , s:gBlue         , s:gBlack       , "bold"       , s:tBlue         , s:tBlack       , "bold"       )
+call s:SetHi("CursorLine"    , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
+call s:SetHi("CursorColumn"  , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
+call s:SetHi("ColorColumn"   , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
+call s:SetHi("LineNr"        , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
+call s:SetHi("NonText"       , s:gRed          , s:gBlack       , "none"       , s:tRed          , s:tBlack       , "none"       )
+call s:SetHi("SpecialKey"    , s:gRed          , s:gBlack       , "none"       , s:tRed          , s:tBlack       , "none"       )
 
 " Force dark background
 set background=dark
