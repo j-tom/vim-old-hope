@@ -53,6 +53,11 @@ function! s:SetHi(grp, gfg, gbg, g, cfg, cbg, c)
   endif
   execute l:hiStr
 endfunction
+
+" * Link highlighting of one group to another
+function! s:LinkHi(obj, target)
+  execute "hi! link " .a:obj ." " .a:target
+endfunction
 " }}}
 
 " Variables {{{
@@ -64,12 +69,13 @@ call s:GetTCo()
 " Colors {{{
 " * GUI
 let s:gWhite           = "#FFFFFF"
+let s:gBlack           = "#000000"
+
 let s:gVeryLightGrey   = "#CBCDD2"
 let s:gLightGrey       = "#848794"
 let s:gGrey            = "#686B78"
 let s:gDarkGrey        = "#45474F"
 let s:gVeryDarkGrey    = "#1C1D21"
-let s:gBlack           = "#000000"
 let s:gRed             = "#EB3D54"
 let s:gOrange          = "#EF7C2A"
 let s:gYellow          = "#E5CD52"
@@ -78,13 +84,14 @@ let s:gBlue            = "#4FB4D8"
 " * t_Co 256 (cterm)
 if s:tCol == 256
   let s:tWhite         = 15
+  let s:tBlack         = 0
+
   let s:tVeryLightGrey = 252
   let s:tLightGrey     = 245
   let s:tGrey          = 242
   let s:tDarkGrey      = 238
   let s:tVeryDarkGrey  = 234
-  let s:tBlack         = 0
-  let s:tRed           = 9   " 203, 167, 196, 160
+  let s:tRed           = 203 " 9, 197
   let s:tOrange        = 202 " 166
   let s:tYellow        = 221 " 222, 227
   let s:tGreen         = 41  " 47
@@ -92,123 +99,135 @@ if s:tCol == 256
 " * t_Co 16
 elseif s:tCol == 16
   let s:tWhite         = 15
+  let s:tBlack         = 0
+
   let s:tVeryLightGrey = 7
   let s:tLightGrey     = 7
   let s:tGrey          = 8
   let s:tDarkGrey      = 8
   let s:tVeryDarkGrey  = 0
-  let s:tBlack         = 0
   let s:tRed           = 9 " 1
-  let s:tOrange        = 5 " 1, 3
+  let s:tOrange        = 5 " 13
   let s:tYellow        = 11
   let s:tGreen         = 2  " 10
-  let s:tBlue          = 4  " 12
+  let s:tBlue          = 14 " 12
 " * t_Co 8
 else
   let s:tWhite         = 7
+  let s:tBlack         = 0
+
   let s:tVeryLightGrey = 7
   let s:tLightGrey     = 7
   let s:tGrey          = 7
   let s:tDarkGrey      = 0
   let s:tVeryDarkGrey  = 0
-  let s:tBlack         = 0
   let s:tRed           = 1
-  let s:tOrange        = 5 " 6
+  let s:tOrange        = 5
   let s:tYellow        = 3
   let s:tGreen         = 2
-  let s:tBlue          = 4 " 6
+  let s:tBlue          = 6
 endif
 " }}}
 
+" Variables {{{
+let s:gFg = s:gVeryLightGrey
+let s:gBg = s:gVeryDarkGrey
+let s:tFg = s:tVeryLightGrey
+let s:tBg = s:tVeryDarkGrey
+" }}}
+
 " Highlight groups {{{
-" Base coloring
-call s:SetHi("Normal"        , s:gVeryLightGrey, s:gBlack       , "none"       , s:tVeryLightGrey, s:tBlack       , "none"       )
-call s:SetHi("Underlined"    , s:gVeryLightGrey, s:gBlack       , "underline"  , s:tVeryLightGrey, s:tBlack       , "underline"  )
+" Basics
+call s:SetHi ("Normal"        , s:gFg           , s:gBg           , "none"       , s:tFg           , s:tBg           , "none"       )
+call s:SetHi ("Underlined"    , s:gFg           , s:gBg           , "underline"  , s:tFg           , s:tBg           , "underline"  )
+call s:SetHi ("Comment"       , s:gGrey         , s:gBg           , ""           , s:tGrey         , s:tBg           , ""           )
+call s:SetHi ("Todo"          , s:gOrange       , s:gBg           , "bold,italic", s:tOrange       , s:tBg           , "bold,italic")
+call s:SetHi ("Ignore"        , s:gGrey         , s:gBg           , ""           , s:tGrey         , s:tBg           , ""           )
 " * Variable types
-call s:SetHi("Number"        , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
-call s:SetHi("Float"         , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
-call s:SetHi("Constant"      , s:gOrange       , s:gBlack       , "bold"       , s:tOrange       , s:tBlack       , "bold"       )
-call s:SetHi("Boolean"       , s:gYellow       , s:gBlack       , "italic"     , s:tYellow       , s:tBlack       , "italic"     )
-call s:SetHi("String"        , s:gGreen        , s:gBlack       , "italic"     , s:tGreen        , s:tBlack       , "italic"     )
-call s:SetHi("Character"     , s:gGreen        , s:gBlack       , "italic"     , s:tGreen        , s:tBlack       , "italic"     )
-" * Keyword types
-call s:SetHi("Conditional"   , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("Keyword"       , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("Operator"      , s:gRed          , s:gBlack       , "none"       , s:tRed          , s:tBlack       , "none"       )
-call s:SetHi("Statement"     , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("Directory"     , s:gGreen        , s:gBlack       , "bold"       , s:tGreen        , s:tBlack       , "bold"       )
-call s:SetHi("Label"         , s:gYellow       , s:gBlack       , "none"       , s:tYellow       , s:tBlack       , "none"       )
-call s:SetHi("Define"        , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
-call s:SetHi("Macro"         , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
-call s:SetHi("SpecialKey"    , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
-call s:SetHi("Function"      , s:gYellow       , s:gBlack       , "none"       , s:tYellow       , s:tBlack       , "none"       )
-call s:SetHi("Identifier"    , s:gYellow       , s:gBlack       , "none"       , s:tYellow       , s:tBlack       , "none"       )
-call s:SetHi("PreCondit"     , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
-call s:SetHi("PreProc"       , s:gOrange       , s:gBlack       , "none"       , s:tOrange       , s:tBlack       , "none"       )
-call s:SetHi("Delimiter"     , s:gVeryLightGrey, s:gBlack       , "none"       , s:tVeryLightGrey, s:tBlack       , "none"       )
-call s:SetHi("Todo"          , s:gOrange       , s:gBlack       , "bold"       , s:tOrange       , s:tBlack       , "bold"       )
-call s:SetHi("Structure"     , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
-call s:SetHi("Typedef"       , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
-call s:SetHi("Type"          , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
-call s:SetHi("Comment"       , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
+call s:SetHi ("Constant"      , s:gOrange       , s:gBg           , "none"       , s:tOrange       , s:tBg           , "none"       )
+call s:LinkHi("Number"        , "Constant")
+call s:LinkHi("Float"         , "Number")
+call s:LinkHi("Boolean"       , "Constant")
+
+call s:SetHi ("String"        , s:gBlue         , s:gBg           , "italic"     , s:tBlue         , s:tBg           , "italic"     )
+call s:LinkHi("Character"     , "String")
+" * Keywords
+call s:SetHi ("Statement"     , s:gGreen        , s:gBg           , "none"       , s:tGreen        , s:tBg           , "none"       )
+call s:LinkHi("Conditional"   , "Statement")
+call s:LinkHi("Keyword"       , "Statement")
+call s:LinkHi("Repeat"        , "Statement")
+call s:LinkHi("Label"         , "Statement")
+call s:LinkHi("Operator"      , "Statement")
+" * PreProcessor macros
+call s:SetHi ("Define"        , s:gGreen        , s:gBg           , "none"       , s:tGreen        , s:tBg           , "none"       )
+call s:LinkHi("Include"       , "Define")
+call s:LinkHi("Macro"         , "Define")
+call s:LinkHi("PreCondit"     , "Define")
+call s:LinkHi("PreProc"       , "Define")
+" * Functions
+call s:SetHi ("Identifier"    , s:gYellow       , s:gBg           , "none"       , s:tYellow       , s:tBg           , "none"       )
+call s:LinkHi("Function"      , "Identifier")
+" * Types
+call s:SetHi ("Type"          , s:gRed          , s:gBg           , "italic"     , s:tRed          , s:tBg           , "italic"     )
+call s:LinkHi("Typedef"       , "Type")
+call s:LinkHi("Structure"     , "Type")
+call s:LinkHi("StorageClass"  , "Type")
+" * Specials
+call s:SetHi ("Special"       , s:gBlue         , s:gBg           , "none"       , s:tBlue         , s:tBg           , "none"       )
+call s:LinkHi("SpecialChar"   , "Special")
+call s:LinkHi("Tag"           , "Special")
+call s:LinkHi("Delimiter"     , "Special")
+call s:LinkHi("SpecialComment", "Special")
+call s:LinkHi("SpecialKey"    , "Special")
+call s:LinkHi("Debug"         , "Special")
 " * Cursor
-call s:SetHi("Cursor"        , s:gBlack        , s:gWhite       , "none"       , s:tBlack        , s:tWhite       , "none"       )
-call s:SetHi("iCursor"       , s:gBlack        , s:gWhite       , "none"       , s:tBlack        , s:tWhite       , "none"       )
+call s:SetHi ("Cursor"        , s:gVeryDarkGrey , s:gWhite        , ""           , s:tVeryDarkGrey , s:tWhite        , ""           )
+call s:LinkHi("iCursor"       , "Cursor")
 " * Diff
-call s:SetHi("DiffAdd"       , s:gBlack        , s:gGreen       , "none"       , s:tBlack        , s:tGreen       , "none"       )
-call s:SetHi("DiffChange"    , s:gBlack        , s:gYellow      , "none"       , s:tBlack        , s:tYellow      , "none"       )
-call s:SetHi("DiffDelete"    , s:gBlack        , s:gRed         , "none"       , s:tBlack        , s:tRed         , "none"       )
-call s:SetHi("DiffText"      , ""              , s:gGrey        , "italic,bold", ""              , s:tGrey        , "italic,bold")
+call s:SetHi ("DiffAdd"       , s:gVeryDarkGrey , s:gGreen        , ""           , s:tVeryDarkGrey , s:tGreen        , ""           )
+call s:SetHi ("DiffChange"    , s:gVeryDarkGrey , s:gYellow       , ""           , s:tVeryDarkGrey , s:tYellow       , ""           )
+call s:SetHi ("DiffDelete"    , s:gVeryDarkGrey , s:gRed          , ""           , s:tVeryDarkGrey , s:tRed          , ""           )
+call s:SetHi ("DiffText"      , ""              , s:gGrey         , ""           , ""              , s:tGrey         , ""           )
 " * Errors
-call s:SetHi("Debug"         , s:gOrange       , s:gBlack       , "bold"       , s:tOrange       , s:tBlack       , "bold"       )
-call s:SetHi("Error"         , s:gBlack        , s:gRed         , "bold"       , s:tBlack        , s:tRed         , "bold"       )
-call s:SetHi("ErrorMsg"      , s:gBlack        , s:gRed         , "none"       , s:tBlack        , s:tRed         , "none"       )
-call s:SetHi("Exception"     , s:gYellow       , s:gBlack       , "bold"       , s:tYellow       , s:tBlack       , "bold"       )
+call s:SetHi ("Error"         , s:gVeryDarkGrey , s:gRed          , "bold"       , s:tVeryDarkGrey , s:tRed          , "bold"       )
+call s:SetHi ("ErrorMsg"      , s:gVeryDarkGrey , s:gRed          , "none"       , s:tVeryDarkGrey , s:tRed          , "none"       )
+call s:SetHi ("Exception"     , s:gYellow       , s:gBg           , "bold"       , s:tYellow       , s:tBg           , "bold"       )
 " * Folding
-call s:SetHi("FoldColumn"    , s:gLightGrey    , s:gDarkGrey    , "none"       , s:tLightGrey    , s:tDarkGrey    , "none"       )
-call s:SetHi("Folded"        , s:gLightGrey    , s:gDarkGrey    , "none"       , s:tLightGrey    , s:tDarkGrey    , "none"       )
+call s:SetHi ("Folded"        , s:gLightGrey    , s:gDarkGrey     , "none"       , s:tLightGrey    , s:tDarkGrey     , "none"       )
+call s:LinkHi("FoldColumn"    , "Folded")
 " * Searching
-call s:SetHi("IncSearch"     , s:gBlack        , s:gLightGrey   , "none"       , s:tBlack        , s:tLightGrey   , "none"       )
-call s:SetHi("Search"        , s:gBlack        , s:gBlue        , "none"       , s:tBlack        , s:tBlue        , "none"       )
+call s:SetHi ("IncSearch"     , s:gVeryDarkGrey , s:gVeryLightGrey, "none"       , s:tVeryDarkGrey , s:tVeryLightGrey, "none"       )
+call s:SetHi ("Search"        , s:gVeryDarkGrey , s:gOrange       , ""           , s:tVeryDarkGrey , s:tOrange       , ""           )
 " * Other
-call s:SetHi("Ignore"        , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
-call s:SetHi("MatchParen"    , s:gYellow       , s:gBlack       , "bold"       , s:tYellow       , s:tBlack       , "bold"       )
-call s:SetHi("ModeMsg"       , s:gGreen        , s:gBlack       , "bold"       , s:tGreen        , s:tBlack       , "bold"       )
-call s:SetHi("ModeMsg"       , s:gYellow       , s:gBlack       , "bold"       , s:tYellow       , s:tBlack       , "bold"       )
-call s:SetHi("Question"      , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("Repeat"        , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
+call s:SetHi ("MatchParen"    , s:gVeryDarkGrey , s:gYellow       , "bold"       , s:tVeryDarkGrey , s:tYellow       , "bold"       )
+call s:SetHi ("ModeMsg"       , s:gOrange       , s:gBg           , ""           , s:tOrange       , s:tBg           , ""           )
+call s:SetHi ("Question"      , s:gOrange       , s:gBg           , ""           , s:tOrange       , s:tBg           , ""           )
 " * Complete menu
-call s:SetHi("Pmenu"         , s:gWhite        , s:gDarkGrey    , "none"       , s:tWhite        , s:tDarkGrey    , "none"       )
-call s:SetHi("PmenuSel"      , s:gBlack        , s:gYellow      , "bold"       , s:tBlack        , s:tYellow      , "bold"       )
-call s:SetHi("PmenuSbar"     , s:gVeryDarkGrey , s:gVeryDarkGrey, "none"       , s:tVeryDarkGrey , s:tVeryDarkGrey, "none"       )
-call s:SetHi("PmenuSbar"     , s:gBlue         , s:gDarkGrey    , "none"       , s:tBlue         , s:tDarkGrey    , "none"       )
+call s:SetHi ("Pmenu"         , s:gWhite        , s:gDarkGrey     , "none"       , s:tWhite        , s:tDarkGrey     , "none"       )
+call s:SetHi ("PmenuSel"      , s:gVeryDarkGrey , s:gGreen        , "bold"       , s:tVeryDarkGrey , s:tGreen        , "bold"       )
+call s:SetHi ("PmenuSbar"     , s:gVeryDarkGrey , s:gVeryDarkGrey , "none"       , s:tVeryDarkGrey , s:tVeryDarkGrey , "none"       )
+call s:SetHi ("PmenuSbar"     , s:gGreen        , s:gVeryDarkGrey , "none"       , s:tGreen        , s:tVeryDarkGrey , "none"       )
 " * Marks
-call s:SetHi("SignColumn"    , s:gGreen        , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
-call s:SetHi("SpecialChar"   , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("SpecialChar"   , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("SpecialComment", s:gGrey         , s:gBlack       , "bold"       , s:tGrey         , s:tBlack       , "bold"       )
-call s:SetHi("Special"       , s:gBlue         , s:gBlack       , "italic"     , s:tBlue         , s:tBlack       , "italic"     )
+call s:SetHi ("SignColumn"    , s:gFg           , s:gBg           , ""           , s:tFg           , s:tBg           , ""           )
 " GUI
-call s:SetHi("StatusLine"    , s:gBlue         , s:gBlack       , "none"       , s:tGreen        , s:tBlack       , "none"       )
-call s:SetHi("StatusLineNC"  , s:gDarkGrey     , s:gBlack       , "none"       , s:tDarkGrey     , s:tBlack       , "none"       )
-call s:SetHi("StorageClass"  , s:gYellow       , ""             , "italic"     , s:tYellow       , ""             , "italic"     )
-call s:SetHi("Tag"           , ""              , ""             , "underline"  , ""              , ""             , "underline"  )
-call s:SetHi("Title"         , s:gOrange       , ""             , "none"       , s:tOrange       , ""             , "none"       )
-call s:SetHi("VertSplit"     , s:gRed          , s:gBlack       , "bold"       , s:tRed          , s:tBlack       , "bold"       )
-call s:SetHi("VisualNOS"     , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
-call s:SetHi("Visual"        , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
-call s:SetHi("WarningMsg"    , s:gOrange       , s:gBlack       , ""           , s:tOrange       , s:tBlack       , ""           )
-call s:SetHi("WildMenu"      , s:gBlue         , s:gBlack       , ""           , s:tBlue         , s:tBlack       , ""           )
-call s:SetHi("TabLineFill"   , s:gBlack        , s:gBlack       , "none"       , s:tBlack        , s:tBlack       , "none"       )
-call s:SetHi("TabLineSel"    , s:gLightGrey    , s:gBlack       , "none"       , s:tLightGrey    , s:tBlack       , "none"       )
-call s:SetHi("TabLine"       , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
-call s:SetHi("CursorLineNr"  , s:gBlue         , s:gBlack       , "bold"       , s:tBlue         , s:tBlack       , "bold"       )
-call s:SetHi("CursorLine"    , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
-call s:SetHi("CursorColumn"  , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
-call s:SetHi("ColorColumn"   , ""              , s:gVeryDarkGrey, ""           , ""              , s:tVeryDarkGrey, ""           )
-call s:SetHi("LineNr"        , s:gGrey         , s:gBlack       , "none"       , s:tGrey         , s:tBlack       , "none"       )
-call s:SetHi("NonText"       , s:gRed          , s:gBlack       , "none"       , s:tRed          , s:tBlack       , "none"       )
-call s:SetHi("SpecialKey"    , s:gRed          , s:gBlack       , "none"       , s:tRed          , s:tBlack       , "none"       )
+call s:SetHi ("StatusLine"    , s:gBlue         , s:gBg           , "none"       , s:tGreen        , s:tBg           , "none"       )
+call s:SetHi ("StatusLineNC"  , s:gGrey         , s:gBg           , "none"       , s:tGrey         , s:tBg           , "none"       )
+call s:SetHi ("Title"         , s:gOrange       , ""              , "none"       , s:tOrange       , ""              , "none"       )
+call s:SetHi ("VertSplit"     , s:gRed          , s:gBg           , "bold"       , s:tRed          , s:tBg           , "bold"       )
+call s:SetHi ("VisualNOS"     , ""              , s:gDarkGrey     , ""           , ""              , s:tDarkGrey     , ""           )
+call s:SetHi ("Visual"        , ""              , s:gDarkGrey     , ""           , ""              , s:tDarkGrey     , ""           )
+call s:SetHi ("WarningMsg"    , s:gOrange       , s:gBg           , ""           , s:tOrange       , s:tBg           , ""           )
+call s:SetHi ("WildMenu"      , s:gBlue         , s:gBg           , ""           , s:tBlue         , s:tBg           , ""           )
+call s:SetHi ("Directory"     , s:gGreen        , s:gBg           , "bold"       , s:tGreen        , s:tBg           , "bold"       )
+call s:SetHi ("TabLineFill"   , s:gVeryDarkGrey , s:gBg           , "none"       , s:tVeryDarkGrey , s:tBg           , "none"       )
+call s:SetHi ("TabLineSel"    , s:gLightGrey    , s:gBg           , "none"       , s:tLightGrey    , s:tBg           , "none"       )
+call s:SetHi ("TabLine"       , s:gGrey         , s:gBg           , "none"       , s:tGrey         , s:tBg           , "none"       )
+call s:SetHi ("CursorLineNr"  , s:gBlue         , s:gBg           , "bold"       , s:tBlue         , s:tBg           , "bold"       )
+call s:SetHi ("CursorLine"    , ""              , s:gDarkGrey     , ""           , ""              , s:tDarkGrey     , ""           )
+call s:SetHi ("CursorColumn"  , ""              , s:gDarkGrey     , ""           , ""              , s:tDarkGrey     , ""           )
+call s:SetHi ("ColorColumn"   , ""              , s:gDarkGrey     , ""           , ""              , s:tDarkGrey     , ""           )
+call s:SetHi ("LineNr"        , s:gGrey         , s:gBg           , "none"       , s:tGrey         , s:tBg           , "none"       )
+call s:SetHi ("NonText"       , s:gRed          , s:gBg           , "none"       , s:tRed          , s:tBg           , "none"       )
 
 " Force dark background
 set background=dark
