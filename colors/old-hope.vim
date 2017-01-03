@@ -57,14 +57,14 @@ elseif s:tCol == 16
 
   let s:tVeryLightGrey = 7
   let s:tLightGrey     = 7
-  let s:tGrey          = 8
+  let s:tGrey          = 12
   let s:tDarkGrey      = 8
   let s:tVeryDarkGrey  = 0
-  let s:tRed           = 9 " 1
-  let s:tOrange        = 5 " 13
+  let s:tRed           = 1
+  let s:tOrange        = 9
   let s:tYellow        = 11
-  let s:tGreen         = 2  " 10
-  let s:tBlue          = 14 " 12
+  let s:tGreen         = 2
+  let s:tBlue          = 14
 " * t_Co 8
 else
   let s:tWhite         = 7
@@ -72,7 +72,7 @@ else
 
   let s:tVeryLightGrey = 7
   let s:tLightGrey     = 7
-  let s:tGrey          = 7
+  let s:tGrey          = 6
   let s:tDarkGrey      = 0
   let s:tVeryDarkGrey  = 0
   let s:tRed           = 1
@@ -89,11 +89,11 @@ let s:gBg = s:gVeryDarkGrey
 let s:tFg = s:tVeryLightGrey
 let s:tBg = s:tVeryDarkGrey
 
-let s:vBold          = {'GUI': "BOLD"          , 'TERM': "BOLD"          }
-let s:vItalic        = {'GUI': "ITALIC"        , 'TERM': "ITALIC"        }
+let s:vBold          = {'GUI': "BOLD"          , 'TERM': "NONE"          }
+let s:vItalic        = {'GUI': "ITALIC"        , 'TERM': "NONE"          }
 let s:vUnderline     = {'GUI': "UNDERLINE"     , 'TERM': "UNDERLINE"     }
 let s:vNone          = {'GUI': "NONE"          , 'TERM': "NONE"          }
-let s:vBoldItalic    = {'GUI': "BOLD,ITALIC"   , 'TERM': "BOLD,ITALIC"   }
+let s:vBoldItalic    = {'GUI': "BOLD,ITALIC"   , 'TERM': "NONE"          }
 let s:vFg            = {'GUI': s:gFg           , 'TERM': s:tFg           }
 let s:vBg            = {'GUI': s:gBg           , 'TERM': s:tBg           }
 let s:vWhite         = {'GUI': s:gWhite        , 'TERM': s:tWhite        }
