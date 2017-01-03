@@ -22,19 +22,19 @@ let s:tCol = functions#GetTCo()
 
 " Colors {{{
 " * GUI
-let s:vWhite           = "#FFFFFF"
-let s:vBlack           = "#000000"
+let s:gWhite           = "#FFFFFF"
+let s:gBlack           = "#000000"
 
-let s:vVeryLightGrey   = "#CBCDD2"
-let s:vLightGrey       = "#848794"
-let s:vGrey            = "#686B78"
-let s:vDarkGrey        = "#45474F"
-let s:vVeryDarkGrey    = "#1C1D21"
-let s:vRed             = "#EB3D54"
-let s:vOrange          = "#EF7C2A"
-let s:vYellow          = "#E5CD52"
-let s:vGreen           = "#78BD65"
-let s:vBlue            = "#4FB4D8"
+let s:gVeryLightGrey   = "#CBCDD2"
+let s:gLightGrey       = "#848794"
+let s:gGrey            = "#686B78"
+let s:gDarkGrey        = "#45474F"
+let s:gVeryDarkGrey    = "#1C1D21"
+let s:gRed             = "#EB3D54"
+let s:gOrange          = "#EF7C2A"
+let s:gYellow          = "#E5CD52"
+let s:gGreen           = "#78BD65"
+let s:gBlue            = "#4FB4D8"
 " * t_Co 256 (cterm)
 if s:tCol == 256
   let s:tWhite         = 15
@@ -84,8 +84,8 @@ endif
 " }}}
 
 " Variables {{{
-let s:vFg = s:vVeryLightGrey
-let s:vBg = s:vVeryDarkGrey
+let s:gFg = s:gVeryLightGrey
+let s:gBg = s:gVeryDarkGrey
 let s:tFg = s:tVeryLightGrey
 let s:tBg = s:tVeryDarkGrey
 
@@ -94,20 +94,20 @@ let s:vItalic        = {'GUI': "ITALIC"        , 'TERM': "ITALIC"        }
 let s:vUnderline     = {'GUI': "UNDERLINE"     , 'TERM': "UNDERLINE"     }
 let s:vNone          = {'GUI': "NONE"          , 'TERM': "NONE"          }
 let s:vBoldItalic    = {'GUI': "BOLD,ITALIC"   , 'TERM': "BOLD,ITALIC"   }
-let s:vFg            = {'GUI': s:vFg           , 'TERM': s:tFg           }
-let s:vBg            = {'GUI': s:vBg           , 'TERM': s:tBg           }
-let s:vWhite         = {'GUI': s:vWhite        , 'TERM': s:tWhite        }
-let s:vBlack         = {'GUI': s:vBlack        , 'TERM': s:tBlack        }
-let s:vVeryLightGrey = {'GUI': s:vVeryLightGrey, 'TERM': s:tVeryLightGrey}
-let s:vLightGrey     = {'GUI': s:vLightGrey    , 'TERM': s:tLightGrey    }
-let s:vGrey          = {'GUI': s:vGrey         , 'TERM': s:tGrey         }
-let s:vDarkGrey      = {'GUI': s:vDarkGrey     , 'TERM': s:tDarkGrey     }
-let s:vVeryDarkGrey  = {'GUI': s:vVeryDarkGrey , 'TERM': s:tVeryDarkGrey }
-let s:vRed           = {'GUI': s:vRed          , 'TERM': s:tRed          }
-let s:vOrange        = {'GUI': s:vOrange       , 'TERM': s:tOrange       }
-let s:vYellow        = {'GUI': s:vYellow       , 'TERM': s:tYellow       }
-let s:vGreen         = {'GUI': s:vGreen        , 'TERM': s:tGreen        }
-let s:vBlue          = {'GUI': s:vBlue         , 'TERM': s:tBlue         }
+let s:vFg            = {'GUI': s:gFg           , 'TERM': s:tFg           }
+let s:vBg            = {'GUI': s:gBg           , 'TERM': s:tBg           }
+let s:vWhite         = {'GUI': s:gWhite        , 'TERM': s:tWhite        }
+let s:vBlack         = {'GUI': s:gBlack        , 'TERM': s:tBlack        }
+let s:vVeryLightGrey = {'GUI': s:gVeryLightGrey, 'TERM': s:tVeryLightGrey}
+let s:vLightGrey     = {'GUI': s:gLightGrey    , 'TERM': s:tLightGrey    }
+let s:vGrey          = {'GUI': s:gGrey         , 'TERM': s:tGrey         }
+let s:vDarkGrey      = {'GUI': s:gDarkGrey     , 'TERM': s:tDarkGrey     }
+let s:vVeryDarkGrey  = {'GUI': s:gVeryDarkGrey , 'TERM': s:tVeryDarkGrey }
+let s:vRed           = {'GUI': s:gRed          , 'TERM': s:tRed          }
+let s:vOrange        = {'GUI': s:gOrange       , 'TERM': s:tOrange       }
+let s:vYellow        = {'GUI': s:gYellow       , 'TERM': s:tYellow       }
+let s:vGreen         = {'GUI': s:gGreen        , 'TERM': s:tGreen        }
+let s:vBlue          = {'GUI': s:gBlue         , 'TERM': s:tBlue         }
 " }}}
 
 " Highlight groups {{{
