@@ -7,7 +7,7 @@
 
 " Functions {{{
 " * Detect used t_Co
-function! functions#GetTCo()
+function! oldhope#GetTCo()
   if exists("&t_Co")
     if (&t_Co > 255)
       let l:tCol=256
@@ -25,7 +25,7 @@ function! functions#GetTCo()
 endfunction
 
 " * Set highlighting for the given group
-function! functions#SetHi(grp, fg, bg, opt)
+function! oldhope#SetHi(grp, fg, bg, opt)
   let l:gFg  = a:fg['GUI']
   let l:gBg  = a:bg['GUI']
   let l:gOpt = a:opt['GUI']
@@ -44,7 +44,7 @@ function! functions#SetHi(grp, fg, bg, opt)
 endfunction
 
 " * Link highlighting of one group to another
-function! functions#LinkHi(obj, target)
+function! oldhope#LinkHi(obj, target)
   execute "hi! link " .a:obj ." " .a:target
 endfunction
 " }}}
