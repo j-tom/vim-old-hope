@@ -85,9 +85,11 @@ endif
 
 " Variables {{{
 let s:gFg = s:gVeryLightGrey
-let s:gBg = s:gVeryDarkGrey
 let s:tFg = s:tVeryLightGrey
-let s:tBg = s:tVeryDarkGrey
+let s:gBg = s:gBlack
+let s:tBg = s:tBlack
+" let s:gBg = s:gVeryDarkGrey
+" let s:tBg = s:tVeryDarkGrey
 
 let s:vBold          = {'GUI': "BOLD"          , 'TERM': "NONE"          }
 let s:vItalic        = {'GUI': "ITALIC"        , 'TERM': "NONE"          }
@@ -115,7 +117,7 @@ let s:vBlue          = {'GUI': s:gBlue         , 'TERM': s:tBlue         }
 call oldhope#SetHi ("Normal"        , s:vFg           , s:vBg           , s:vNone      )
 call oldhope#SetHi ("Underlined"    , s:vFg           , s:vBg           , s:vUnderline )
 call oldhope#SetHi ("Comment"       , s:vGrey         , s:vBg           , s:vNone      )
-call oldhope#SetHi ("Todo"          , s:vOrange       , s:vBg           , s:vBoldItalic)
+call oldhope#SetHi ("Todo"          , s:vOrange       , s:vBg           , s:vNone      )
 call oldhope#SetHi ("Ignore"        , s:vGrey         , s:vBg           , s:vNone      )
 " * Variable types
 call oldhope#SetHi ("Constant"      , s:vOrange       , s:vBg           , s:vNone      )
@@ -123,7 +125,7 @@ call oldhope#LinkHi("Number"        , "Constant")
 call oldhope#LinkHi("Float"         , "Number")
 call oldhope#LinkHi("Boolean"       , "Constant")
 
-call oldhope#SetHi ("String"        , s:vBlue         , s:vBg           , s:vItalic    )
+call oldhope#SetHi ("String"        , s:vBlue         , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Character"     , "String")
 " * Keywords
 call oldhope#SetHi ("Statement"     , s:vGreen        , s:vBg           , s:vNone      )
@@ -133,7 +135,7 @@ call oldhope#LinkHi("Repeat"        , "Statement")
 call oldhope#LinkHi("Label"         , "Statement")
 call oldhope#LinkHi("Operator"      , "Statement")
 " * PreProcessor macros
-call oldhope#SetHi ("Define"        , s:vGreen        , s:vBg           , s:vItalic    )
+call oldhope#SetHi ("Define"        , s:vGreen        , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Include"       , "Define")
 call oldhope#LinkHi("Macro"         , "Define")
 call oldhope#LinkHi("PreCondit"     , "Define")
@@ -142,7 +144,7 @@ call oldhope#LinkHi("PreProc"       , "Define")
 call oldhope#SetHi ("Identifier"    , s:vYellow       , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Function"      , "Identifier")
 " * Types
-call oldhope#SetHi ("Type"          , s:vRed          , s:vBg           , s:vItalic    )
+call oldhope#SetHi ("Type"          , s:vRed          , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Typedef"       , "Type")
 call oldhope#LinkHi("Structure"     , "Type")
 call oldhope#LinkHi("StorageClass"  , "Type")
@@ -199,9 +201,9 @@ call oldhope#SetHi ("TabLineFill"   , s:vVeryDarkGrey , s:vBg           , s:vNon
 call oldhope#SetHi ("TabLineSel"    , s:vLightGrey    , s:vBg           , s:vNone      )
 call oldhope#SetHi ("TabLine"       , s:vGrey         , s:vBg           , s:vNone      )
 call oldhope#SetHi ("CursorLineNr"  , s:vBlack        , s:vRed          , s:vBold      )
-call oldhope#SetHi ("CursorLine"    , s:vNone         , s:vBlack        , s:vNone      )
-call oldhope#SetHi ("CursorColumn"  , s:vNone         , s:vBlack        , s:vNone      )
-call oldhope#SetHi ("ColorColumn"   , s:vNone         , s:vBlack        , s:vNone      )
+call oldhope#SetHi ("CursorLine"    , s:vNone         , s:vVeryDarkGrey , s:vNone      )
+call oldhope#SetHi ("CursorColumn"  , s:vNone         , s:vVeryDarkGrey , s:vNone      )
+call oldhope#SetHi ("ColorColumn"   , s:vNone         , s:vVeryDarkGrey , s:vNone      )
 call oldhope#SetHi ("LineNr"        , s:vGrey         , s:vBg           , s:vNone      )
 call oldhope#SetHi ("NonText"       , s:vRed          , s:vBg           , s:vNone      )
 
