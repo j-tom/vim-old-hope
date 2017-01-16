@@ -207,10 +207,9 @@ call oldhope#SetHi ("ColorColumn"   , s:vNone         , s:vVeryDarkGrey , s:vNon
 call oldhope#SetHi ("LineNr"        , s:vGrey         , s:vBg           , s:vNone      )
 call oldhope#SetHi ("NonText"       , s:vRed          , s:vBg           , s:vNone      )
 " User colors for status line
-call oldhope#LinkHi("User1", "Constant")
-call oldhope#LinkHi("User2", "Constant")
-call oldhope#LinkHi("User3", "Normal")
-call oldhope#LinkHi("User4", "Type")
+call oldhope#SetHi ("User1"         , s:vBlack        , s:vRed          , s:vBold      )
+call oldhope#SetHi ("User2"         , s:vOrange       , s:vBg           , s:vBold      )
+call oldhope#SetHi ("User3"         , s:vFg           , s:vBg           , s:vBold      )
 
 " Force dark background
 set background=dark
