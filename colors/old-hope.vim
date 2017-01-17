@@ -188,8 +188,8 @@ call oldhope#SetHi ("PmenuSbar"     , s:vGreen        , s:vVeryDarkGrey , s:vNon
 " * Marks
 call oldhope#SetHi ("SignColumn"    , s:vFg           , s:vBg           , s:vNone      )
 " GUI
-call oldhope#SetHi ("StatusLine"    , s:vBlue         , s:vBg           , s:vNone      )
-call oldhope#SetHi ("StatusLineNC"  , s:vGrey         , s:vBg           , s:vNone      )
+call oldhope#SetHi ("StatusLine"    , s:vFg           , s:vBg           , s:vBold      )
+call oldhope#SetHi ("StatusLineNC"  , s:vGrey         , s:vBg           , s:vBold      )
 call oldhope#SetHi ("Title"         , s:vOrange       , s:vNone         , s:vNone      )
 call oldhope#SetHi ("VertSplit"     , s:vRed          , s:vBg           , s:vBold      )
 call oldhope#SetHi ("VisualNOS"     , s:vNone         , s:vDarkGrey     , s:vNone      )
@@ -208,7 +208,7 @@ call oldhope#SetHi ("LineNr"        , s:vGrey         , s:vBg           , s:vNon
 call oldhope#SetHi ("NonText"       , s:vRed          , s:vBg           , s:vNone      )
 " User colors for status line
 call oldhope#SetHi ("User1"         , s:vBlack        , s:vRed          , s:vBold      )
-call oldhope#SetHi ("User2"         , s:vOrange       , s:vBg           , s:vBold      )
+call oldhope#SetHi ("User2"         , s:vRed          , s:vBg           , s:vBold      )
 call oldhope#SetHi ("User3"         , s:vFg           , s:vBg           , s:vBold      )
 
 " Force dark background
